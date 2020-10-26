@@ -67,8 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // 给rg_login设置单选监听器
         rg_login.setOnCheckedChangeListener(new RadioListener());
-        // 给ck_remember设置勾选监听器
-        ck_remember.setOnCheckedChangeListener(new CheckListener());
+
         // 给et_phone添加文本变更监听器
         et_phone.addTextChangedListener(new HideTextWatcher(et_phone));
         // 给et_password添加文本变更监听器
@@ -79,15 +78,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initTypeSpinner();
 
+        // 给ck_remember设置勾选监听器
+        ck_remember.setOnCheckedChangeListener(new CheckListener());
+
         //从share_login.xml中获取共享参数对象
         mShared = getSharedPreferences("share_login", MODE_PRIVATE);
+
         // 获取共享参数中保存的手机号码
-        /*String phone = mShared.getString("phone", "");
+        String phone = mShared.getString("phone", "");
         // 获取共享参数中保存的密码
         String password = mShared.getString("password", "");
         et_phone.setText(phone); // 给手机号码编辑框填写上次保存的手机号
         et_password.setText(password); // 给密码编辑框填写上次保存的密码
-        */
+
 
         // 给密码编辑框注册一个焦点变化监听器，一旦焦点发生变化，就触发监听器的onFocusChange方法
         et_password.setOnFocusChangeListener(this);
