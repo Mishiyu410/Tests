@@ -15,8 +15,8 @@ public class GoodsDBHelper extends SQLiteOpenHelper {
     private static final String TAG = "GoodsDBHelper";
     private static final String DB_NAME = "goods.db"; // 数据库的名称
     private static final int DB_VERSION = 1; // 数据库的版本号
-    private static GoodsDBHelper Helper = null; // 数据库帮助器的实例
-    private SQLiteDatabase DB = null; // 数据库的实例
+    private static GoodsDBHelper mHelper = null; // 数据库帮助器的实例
+    private SQLiteDatabase mDB = null; // 数据库的实例
     private static final String TABLE_NAME = "goods_info"; // 表的名称
 
     private GoodsDBHelper(Context context) {
@@ -29,35 +29,35 @@ public class GoodsDBHelper extends SQLiteOpenHelper {
 
     // 利用单例模式获取数据库帮助器的唯一实例
     public static GoodsDBHelper getInstance(Context context, int version) {
-        if (version > 0 && Helper == null) {
-            Helper = new GoodsDBHelper(context, version);
-        } else if (Helper == null) {
-            Helper = new GoodsDBHelper(context);
+        if (version > 0 && mHelper == null) {
+            mHelper = new GoodsDBHelper(context, version);
+        } else if (mHelper == null) {
+            mHelper = new GoodsDBHelper(context);
         }
-        return Helper;
+        return mHelper;
     }
 
     // 打开数据库的读连接
     public SQLiteDatabase openReadLink() {
-        if (DB == null || !DB.isOpen()) {
-            DB = Helper.getReadableDatabase();
+        if (mDB == null || !mDB.isOpen()) {
+            mDB = mHelper.getReadableDatabase();
         }
-        return DB;
+        return mDB;
     }
 
     // 打开数据库的写连接
     public SQLiteDatabase openWriteLink() {
-        if (DB == null || !DB.isOpen()) {
-            DB = Helper.getWritableDatabase();
+        if (mDB == null || !mDB.isOpen()) {
+            mDB = mHelper.getWritableDatabase();
         }
-        return DB;
+        return mDB;
     }
 
     // 关闭数据库连接
     public void closeLink() {
-        if (DB != null && DB.isOpen()) {
-            DB.close();
-            DB = null;
+        if (mDB != null && mDB.isOpen()) {
+            mDB.close();
+            mDB = null;
         }
     }
 
@@ -86,13 +86,13 @@ public class GoodsDBHelper extends SQLiteOpenHelper {
     // 根据指定条件删除表记录
     public int delete(String condition) {
         // 执行删除记录动作，该语句返回删除记录的数目
-        return DB.delete(TABLE_NAME, condition, null);
+        return mDB.delete(TABLE_NAME, condition, null);
     }
 
     // 删除该表的所有记录
     public int deleteAll() {
         // 执行删除记录动作，该语句返回删除记录的数目
-        return DB.delete(TABLE_NAME, "1=1", null);
+        return mDB.delete(TABLE_NAME, "1=1", null);
     }
 
     // 往该表添加一条记录
@@ -121,7 +121,7 @@ public class GoodsDBHelper extends SQLiteOpenHelper {
             cv.put("thumb_path", info.thumb_path);
             cv.put("pic_path", info.pic_path);
             // 执行插入记录动作，该语句返回插入记录的行号
-            result = DB.insert(TABLE_NAME, "", cv);
+            result = mDB.insert(TABLE_NAME, "", cv);
             // 添加成功后返回行号，失败后返回-1
             if (result == -1) {
                 return result;
@@ -139,7 +139,7 @@ public class GoodsDBHelper extends SQLiteOpenHelper {
         cv.put("thumb_path", info.thumb_path);
         cv.put("pic_path", info.pic_path);
         // 执行更新记录动作，该语句返回记录更新的数目
-        return DB.update(TABLE_NAME, cv, condition, null);
+        return mDB.update(TABLE_NAME, cv, condition, null);
     }
 
     public int update(GoodsInfo info) {
@@ -154,7 +154,7 @@ public class GoodsDBHelper extends SQLiteOpenHelper {
         Log.d(TAG, "query sql: " + sql);
         ArrayList<GoodsInfo> infoArray = new ArrayList<GoodsInfo>();
         // 执行记录查询动作，该语句返回结果集的游标
-        Cursor cursor = DB.rawQuery(sql, null);
+        Cursor cursor = mDB.rawQuery(sql, null);
         // 循环取出游标指向的每条记录
         while (cursor.moveToNext()) {
             GoodsInfo info = new GoodsInfo();

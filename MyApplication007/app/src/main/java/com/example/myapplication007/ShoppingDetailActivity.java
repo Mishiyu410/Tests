@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication007.R;
 import com.example.myapplication007.bean.CartInfo;
 import com.example.myapplication007.bean.GoodsInfo;
 import com.example.myapplication007.database.CartDBHelper;
@@ -51,7 +50,7 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         if (v.getId() == R.id.iv_cart) { // 点击了购物车图标
             // 跳转到购物车页面
-            Intent intent = new Intent(this, ShoppingCartActivity.class);
+            Intent intent = new Intent(this, ShoppingCartProActivity.class);
             startActivity(intent);
         } else if (v.getId() == R.id.btn_add_cart) { // 点击了“添加”按钮
             // 把该商品添加到购物车
@@ -137,11 +136,11 @@ public class ShoppingDetailActivity extends AppCompatActivity implements View.On
         int id = item.getItemId();
         if (id == R.id.menu_shopping) { // 点击了菜单项“去商场购物”
             // 跳转到商场页面
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, ShoppingChannelActivity.class);
             startActivity(intent);
         } else if (id == R.id.menu_cart) { // 点击了菜单项“打开购物车”
             // 跳转到购物车页面
-            Intent intent = new Intent(this, ShoppingCartActivity.class);
+            Intent intent = new Intent(this, ShoppingCartProActivity.class);
             startActivity(intent);
         } else if (id == R.id.menu_return) { // 点击了菜单项“返回”
             finish();

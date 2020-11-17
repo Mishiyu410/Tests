@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication007.R;
 import com.example.myapplication007.bean.CartInfo;
 import com.example.myapplication007.bean.GoodsInfo;
 import com.example.myapplication007.database.CartDBHelper;
@@ -42,14 +41,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // 隐藏标题栏
         getSupportActionBar().hide();
-
         TextView tv_title = findViewById(R.id.tv_title);
         tv_count = findViewById(R.id.tv_count);
         ll_channel = findViewById(R.id.ll_channel);
         findViewById(R.id.iv_cart).setOnClickListener(this);
-        tv_title.setText("芈诗雨的商场");
+        tv_title.setText("芈诗雨的商城");
     }
 
     @Override
@@ -227,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // 往全局内存写入商品小图
                 Bitmap thumb = BitmapFactory.decodeResource(getResources(), info.thumb);
                 MainApplication.getInstance().mIconMap.put(rowid, thumb);
-                String thumb_path = path + rowid + ".jpg";
+                String thumb_path = path + rowid + "_s.jpg";
                 FileUtil.saveImage(thumb_path, thumb);
                 info.thumb_path = thumb_path;
                 // 往SD卡保存商品大图

@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.example.myapplication007.R;
 import com.example.myapplication007.adapter.GoodsAdapter;
 import com.example.myapplication007.adapter.GoodsAdapter.addCartListener;
 import com.example.myapplication007.bean.CartInfo;

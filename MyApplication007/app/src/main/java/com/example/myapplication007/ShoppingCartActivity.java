@@ -19,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication007.R;
 import com.example.myapplication007.bean.CartInfo;
 import com.example.myapplication007.bean.GoodsInfo;
 import com.example.myapplication007.database.CartDBHelper;
