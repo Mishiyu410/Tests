@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/iv_thumb"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="250dp"
         android:scaleType="fitCenter" />
 
     <TextView
@@ -18,12 +18,20 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/black"
-        android:textSize="17sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:textColor="@color/red"
+            android:textSize="0.25sp" />
 
         <Button
             android:id="@+id/btn_add"
@@ -33,7 +41,7 @@
             android:gravity="center"
             android:text="加入购物车"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_price"
@@ -44,5 +52,12 @@
             android:textColor="@color/red"
             android:textSize="15sp" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="10sp" />
 
 </LinearLayout>
