@@ -19,6 +19,7 @@
         <activity android:name=".TabFragmentActivity" android:exported="true"  />
         <activity android:name=".TabGroupActivity" android:exported="true" />
         <activity android:name=".TabFirstActivity" android:exported="true"  />
+        <activity android:name=".TabButtonActivity" android:exported="true"  />
         <activity
             android:name=".ViewPagerActivity"
             android:exported="true" />
