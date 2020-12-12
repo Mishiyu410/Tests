@@ -19,3 +19,5 @@ MyApplication010为第十次作业
 MyApplication011为第十一次作业
 
 TerminalApplication为期末作业
+
+app-release.apk为期末作业安装包
